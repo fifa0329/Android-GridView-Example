@@ -11,16 +11,13 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-/**
- * @author javatechig {@link http://javatechig.com}
- */
 public class GridViewAdapter extends ArrayAdapter<ImageItem> {
+
     private Context context;
     private int layoutResourceId;
     private ArrayList<ImageItem> data = new ArrayList<ImageItem>();
 
-    public GridViewAdapter(Context context, int layoutResourceId,
-                           ArrayList<ImageItem> data) {
+    public GridViewAdapter(Context context, int layoutResourceId, ArrayList<ImageItem> data) {
         super(context, layoutResourceId, data);
         this.layoutResourceId = layoutResourceId;
         this.context = context;
@@ -30,7 +27,7 @@ public class GridViewAdapter extends ArrayAdapter<ImageItem> {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         View row = convertView;
-        ViewHolder holder = null;
+        ViewHolder holder;
 
         if (row == null) {
             LayoutInflater inflater = ((Activity) context).getLayoutInflater();
@@ -42,6 +39,7 @@ public class GridViewAdapter extends ArrayAdapter<ImageItem> {
         } else {
             holder = (ViewHolder) row.getTag();
         }
+
 
         ImageItem item = data.get(position);
         holder.imageTitle.setText(item.getTitle());
